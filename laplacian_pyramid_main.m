@@ -5,7 +5,7 @@
 clear all; close all; clc;
 
 settings.a                = 0.3;
-settings.input_image      = 'lena_no_alpha.png';
+settings.input_image      = ['example.png'];
 settings.N                = 6;
 settings.output_directory = 'results';
 mkdir(settings.output_directory);
