@@ -26,7 +26,7 @@ clear w_t m n;
 %% construct gaussian pyramid 
 %   with REDUCE method
 gaussian_pyramid    = cell(settings.N, 1);
-gaussian_pyramid{1} = double(rgb2gray(imread(settings.input_image)))-127.5; 
+gaussian_pyramid{1} = double(rgb2gray(imread(settings.input_image)))-128; 
 
 for k=2:settings.N 
     gaussian_pyramid{k} = REDUCE(gaussian_pyramid{k-1}, w);
@@ -35,7 +35,7 @@ end
 clear k;
 %% save gaussian pyramid
 for k=1:settings.N
-    imwrite(uint8(gaussian_pyramid{k}+127.5),[settings.output_directory, sprintf('/gaussian_pyramid_layer_%d.png', k)]);
+    imwrite(uint8(gaussian_pyramid{k}+128),[settings.output_directory, sprintf('/gaussian_pyramid_layer_%d.png', k)]);
 end
 
 clear k;
@@ -53,7 +53,7 @@ laplacian_pyramid{settings.N} = gaussian_pyramid{settings.N};
 clear k;
 %% save laplacian pyramid
 for k=1:settings.N
-    imwrite(uint8(laplacian_pyramid{k}+127.5),[settings.output_directory, sprintf('/laplacian_pyramid_layer_%d.png', k)]);
+    imwrite(uint8(laplacian_pyramid{k}+128),[settings.output_directory, sprintf('/laplacian_pyramid_layer_%d.png', k)]);
 end
 
 clear k;
@@ -73,7 +73,7 @@ end
 clear k;
 %% save images throughout recovery
 for k=1:settings.N
-    imwrite(uint8(recovered_images{k}+127.5),[settings.output_directory, sprintf('/recovered_image_%d.png', k)]);
+    imwrite(uint8(recovered_images{k}+128),[settings.output_directory, sprintf('/recovered_image_%d.png', k)]);
 end
 
 clear k;
