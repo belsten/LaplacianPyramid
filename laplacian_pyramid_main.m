@@ -5,7 +5,7 @@
 clear all; close all; clc;
 
 settings.a                = 0.3;
-settings.input_image      = ['example.png'];
+settings.input_image      = 'example.png';
 settings.N                = 6;
 settings.output_directory = 'results';
 mkdir(settings.output_directory);
@@ -26,7 +26,7 @@ clear w_t m n;
 %% construct gaussian pyramid 
 %   with REDUCE method
 gaussian_pyramid    = cell(settings.N, 1);
-gaussian_pyramid{1} = double(rgb2gray(imread(settings.input_image)))-128; 
+gaussian_pyramid{1} = double(imread(settings.input_image))-128; 
 
 for k=2:settings.N 
     gaussian_pyramid{k} = REDUCE(gaussian_pyramid{k-1}, w);
